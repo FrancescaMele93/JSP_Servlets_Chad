@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Tracker App</title>
+</head>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+<body>
+	
+	<p>Hello world!</p>
+
+</body>
+</html>

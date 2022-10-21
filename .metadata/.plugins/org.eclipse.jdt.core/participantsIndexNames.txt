@@ -1,9 +1,17 @@
 INDEX VERSION 1.131
+C:\Users\francesca.mele\JSP_Servlets_Chad\JSP_Servlets_Chad\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2884291122.index
+\jspdemo\src
 C:\Users\francesca.mele\JSP_Servlets_Chad\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\816415338.index
 \web-student-tracker\src
+C:\Users\francesca.mele\JSP_Servlets_Chad\JSP_Servlets_Chad\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\816415338.index
+\web-student-tracker\src
+C:\Users\francesca.mele\JSP_Servlets_Chad\JSP_Servlets_Chad\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\268336506.index
+\servletdemo\src
 C:\Users\francesca.mele\JSP_Servlets_Chad\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2884291122.index
 \jspdemo\src
 C:\Users\francesca.mele\JSP_Servlets_Chad\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1154960370.index
 \tagdemo\src
 C:\Users\francesca.mele\JSP_Servlets_Chad\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\268336506.index
 \servletdemo\src
+C:\Users\francesca.mele\JSP_Servlets_Chad\JSP_Servlets_Chad\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1154960370.index
+\tagdemo\src

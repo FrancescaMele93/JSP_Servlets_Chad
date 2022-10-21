@@ -1,7 +1,9 @@
 package com.luv2code.web.jdbc;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +83,76 @@ public class StudentDbUtil {
 			exc.printStackTrace();
 		}
 		
+	}
+
+	public void addStudent(Student theStudent) throws Exception {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		
+		try {
+			//get db connection
+			myConn = dataSource.getConnection();
+			
+			//create sql for insert
+			String sql = "insert into student "
+					+ "(first_name, last_name, email) "
+					+ "values (?, ?, ?)";
+			myStmt = myConn.prepareStatement(sql);
+			
+			//set param values for stud
+			myStmt.setString(1, theStudent.getFirstName());
+			myStmt.setString(2, theStudent.getLastName());
+			myStmt.setString(3, theStudent.getEmail());
+			
+			//execute sql insert
+			myStmt.execute();
+		} finally {
+			close(myConn, myStmt, null);
+		}
+		
+		
+		//clean up JDBC objects
+		
+	}
+
+	public Student getStudent(String theStudentId) throws Exception {
+		Student theStudent = null;
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		int studentId;
+		
+		try {
+			//convert stud if to int
+			studentId = Integer.parseInt(theStudentId);
+			//get connection to db
+			myConn = dataSource.getConnection();
+			//create sql to get selected student
+			String sql = "select * from student where id=?";
+			//create prepared statement
+			myStmt = myConn.prepareStatement(sql);
+			//set params
+			myStmt.setInt(1, studentId);
+			//execute statement
+			myRs = myStmt.executeQuery();
+			
+			//retrieve data from result set row
+			if (myRs.next()) {
+				String firstName = myRs.getString("first_name");
+				String lastName = myRs.getString("last_name");
+				String email = myRs.getString("email");
+				
+				theStudent = new Student(studentId, firstName, lastName, email);
+			} else {
+				throw new Exception("Could not find student it: " + studentId);
+			}
+			
+			return theStudent;
+		}
+		finally {
+			//JDBC obj cleanup
+			close(myConn, myStmt, myRs);
+		}
 	}
 
 }

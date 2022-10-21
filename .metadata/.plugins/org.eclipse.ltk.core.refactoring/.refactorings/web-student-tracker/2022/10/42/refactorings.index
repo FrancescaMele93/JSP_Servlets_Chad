@@ -1,3 +1,7 @@
 1666175994290	Rename local variable 'myconnection'
 1666185474810	Rename local variable 'myresultSet'
 1666186136858	Rename method 'getStudends'
+1666340852012	Rename resource 'web.xml'
+1666347462022	Rename local variable 'studId'
+1666348622600	Delete element
+1666348638602	Copy file

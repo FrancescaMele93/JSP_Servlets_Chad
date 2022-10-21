@@ -42,12 +42,67 @@ public class StudentControllerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			//read the "command" parameter
+			String theCommand = request.getParameter("command");
+			
+			//if the command is missing, default to listing students
+			if (theCommand == null) {
+				theCommand = "LIST";
+			}
+			
+			//route to the appropriate method
+			switch (theCommand) {
+				case "ADD":
+					addStudent(request, response);
+					break;
+				case "LIST": 
+					listStudents(request, response);
+					break;
+				case "LOAD":
+					loadStudent(request, response);					
+				default:
+					listStudents(request, response);
+			}
+			
+			
 			//list the students in MVC fashion
 			listStudents(request, response);
 		}
 		catch (Exception exc) {
 			throw new ServletException(exc);
 		}
+	}
+
+	private void addStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		//read student info from form data
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String email = request.getParameter("email");
+		
+		//create new stud obj
+		Student theStudent = new Student(firstName, lastName, email);
+		
+		//add the stud to database
+		studentDbUtil.addStudent(theStudent);
+		
+		//send back to main page (the stud list)
+		listStudents(request, response);
+	}
+	
+	//Repopulate the form:
+	private void loadStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		//read stud id from form
+		String theStudentId = request.getParameter("studentId");
+		
+		//get stud from db util
+		Student theStudent = studentDbUtil.getStudent(theStudentId);
+		
+		//place stud in the request attribute
+		request.setAttribute("THE_STUDENT", theStudent);
+		
+		//send to update-student-form.jsp
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/update-student-form.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	private void listStudents(HttpServletRequest request, HttpServletResponse response) throws Exception {
