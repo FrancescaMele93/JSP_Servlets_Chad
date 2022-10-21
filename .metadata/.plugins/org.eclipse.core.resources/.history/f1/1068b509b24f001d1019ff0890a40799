@@ -1,0 +1,39 @@
+package com.luv2code.web.jdbc;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.sql.DataSource;
+
+public class StudentDbUtil {
+	
+	private DataSource dataSource;
+	
+	public StudentDbUtil(DataSource theDataSource) {
+		dataSource = theDataSource;
+	}
+	
+	public List<Student> getStudends() throws Exception {
+		
+		List<Student> students = new ArrayList<>();
+		
+		Connection myConnection = null;
+		Statement myStatement = null;
+		ResultSet myresultSet = null;
+		
+		//get a connection
+		
+		
+		//create sql statement
+		
+		
+		//e
+		
+		return students;
+		
+	}
+
+}

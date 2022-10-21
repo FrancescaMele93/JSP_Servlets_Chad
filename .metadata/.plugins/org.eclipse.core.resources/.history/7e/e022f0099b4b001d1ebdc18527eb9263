@@ -1,0 +1,68 @@
+<!-- <> -->
+<%@page import="java.util.*"%>
+<%
+	List<String> items = (List<String>) session.getAttribute("myToDoList");
+	
+	String newItem = request.getParameter("newItem");
+
+	if (items == null) {
+		items = new ArrayList<>();
+	}
+	
+	if (newItem != null) {
+		items.add(newItem);
+	}
+	
+	String action = request.getParameter("action");
+	
+	if (action != null) {
+		if (action.equalsIgnoreCase("deleteAll")) {
+			session.removeAttribute("myToDoList");
+			items = new ArrayList<>();
+		} else {
+			if (items.size() > 0) {
+				items.remove(items.size() - 1);
+				session.setAttribute("myToDoList", items);
+			}
+		}
+	} else {
+		session.setAttribute("myToDoList", items);	
+	}
+                                           
+	
+	int count = items.size();
+%>
+<html>
+<body>
+
+	<form action="todolist.jsp">
+		<label>Add new item: </label>
+		<input type="text" name="newItem" /> 
+		<input type="submit" value="Submit" />
+	</form>
+	
+	<form action="todolist.jsp">
+		<label>Delete all items: </label>
+		<input type="hidden" name="action" value="deleteAll" /> 
+		<input type="submit" value="Delete all" />
+	</form>
+	<form action="todolist.jsp">
+		<label>Delete last item: </label>
+		<input type="hidden" name="action" value="deleteLast" /> 
+		<input type="submit" value="Delete last" />
+	</form>
+	<br/>
+
+	<h2><strong>To-do List items:</strong></h2>
+
+	The list contains <%= count %> elements.
+
+	<ol>
+		<% for (String singleItem : items) {%>
+		<!--  -->
+			<li> <%= singleItem %> </li>
+		<%	}%>
+	</ol>
+
+</body>
+</html>

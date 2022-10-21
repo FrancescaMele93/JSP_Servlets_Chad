@@ -1,0 +1,30 @@
+<%@page import="java.util.*"%>
+<%
+	List<String> items = (List<String>) session.getAttribute("myToDoList");
+	int count = items.size();
+
+
+<!-- 	List<String> itemList = new ArrayList<>(); -->
+	
+<!-- 	String[] items = request.getParameterValues("newItem"); -->
+
+<!-- 	session.setAttribute("myToDoList", itemList); -->
+%>
+<html>
+<body>
+
+Add new item: 
+
+	<form action="student-response.jsp">
+		<input type="text" name="newItem" /> 
+		<input type="submit" value="Submit" />
+	</form>
+
+	<br></br>
+
+	<h2><strong>To-do List items:</strong></h2>
+
+The list contains: <%= count> elements.
+
+</body>
+</html>

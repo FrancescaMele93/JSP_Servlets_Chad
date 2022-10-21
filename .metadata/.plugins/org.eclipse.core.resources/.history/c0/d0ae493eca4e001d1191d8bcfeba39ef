@@ -1,0 +1,15 @@
+<html>
+<body>
+
+	<form action="StudentServlet" method="GET" >
+	
+		<p>Frist name: <input type="text" name="firstName" /></p>
+		
+		<p>Last name: <input type="text" name="lastName" /></p>
+			
+		<input type="submit" value="Submit" />
+	
+	</form>
+
+</body>
+</html>
